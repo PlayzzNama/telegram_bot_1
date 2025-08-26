@@ -60,7 +60,7 @@ const matches = [
   teams: '⚫⚪Тестовий FC - FC Demo🔵⚪',
   stadium: 'Тестовий стадіон 🏟️',
   tournament: 'Тестовий турнір 🏆',
-  time: new Date(Date.now() + 3 * 60000).toISOString(), // через 10 хвилин
+  time: new Date(Date.now() + 6 * 60000).toISOString(), // через 10 хвилин
   streamUrl: 'https://example.com/test-stream'
   }
 ];
