@@ -55,14 +55,6 @@ const matches = [
     time: '2025-08-27T22:00:00',
     streamUrl: 'https://k352.liveball.st/match/1390871'
   },
-  {
-  id: '6',
-  teams: '⚫⚪Тестовий FC - FC Demo🔵⚪',
-  stadium: 'Тестовий стадіон 🏟️',
-  tournament: 'Тестовий турнір 🏆',
-  time: new Date(Date.now() + 6 * 60000).toISOString(), // через 10 хвилин
-  streamUrl: 'https://example.com/test-stream'
-  }
 ];
 
 // ---- Перевірка підписки ----
