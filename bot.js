@@ -56,12 +56,12 @@ const matches = [
     streamUrl: 'https://k352.liveball.st/match/1390871'
   },
   {
-    id: '6',
-    teams: 'TEST',
-    stadium: 'Естадіо Балаїдос (Віго) 🇪🇸',
-    tournament: 'ЛаЛіга',
-    time: '2025-08-27T21:50:00',
-    streamUrl: 'https://k352.liveball.st/match/1390871'
+  id: '6',
+  teams: '⚫⚪Тестовий FC - FC Demo🔵⚪',
+  stadium: 'Тестовий стадіон 🏟️',
+  tournament: 'Тестовий турнір 🏆',
+  time: new Date(Date.now() + 3 * 60000).toISOString(), // через 10 хвилин
+  streamUrl: 'https://example.com/test-stream'
   }
 ];
 
