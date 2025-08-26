@@ -1,5 +1,7 @@
 require('dotenv').config();
 const { Telegraf, Markup } = require('telegraf');
+const cron = require('node-cron');
+const fs = require('fs');
 
 const BOT_TOKEN = process.env.BOT_TOKEN;
 const CHANNEL_ID = process.env.CHANNEL_ID;     // @username або -100...
@@ -18,7 +20,7 @@ const matches = [
     teams: '⚫⚪Карабах - Ференцварош🟢⚪',
     stadium: 'Стадіон ім. Тофіка Бахрамова (Баку) 🇦🇿',
     tournament: 'Кваліфікація до ЛЧ',
-    time: '19:45',
+    time: '2025-08-27T19:45:00', // обов’язково у форматі ISO для Date
     streamUrl: 'https://k352.liveball.st/match/1435553'
   },
   {
@@ -26,7 +28,7 @@ const matches = [
     teams: '🔴⚪Бенфіка - Фенербахче⚫🟡',
     stadium: 'Ештадіу да Луж (Лісабон) 🇵🇹',
     tournament: 'Кваліфікація до ЛЧ',
-    time: '22:00',
+    time: '2025-08-27T22:00:00',
     streamUrl: 'https://k352.liveball.st/match/1435556'
   },
   {
@@ -34,7 +36,7 @@ const matches = [
     teams: '⚪🔵Копенгаген - Базель🔴🔵',
     stadium: 'Паркен (Копенгаген) 🇩🇰',
     tournament: 'Кваліфікація до ЛЧ',
-    time: '22:00',
+    time: '2025-08-27T22:00:00',
     streamUrl: 'https://k352.liveball.st/match/1435554'
   },
   {
@@ -42,7 +44,7 @@ const matches = [
     teams: '🔵⚫Брюгге - Рейнджерс🔵⚪',
     stadium: 'Ян Брейдел Стадіон (Брюгге) 🇧🇪',
     tournament: 'Кваліфікація до ЛЧ',
-    time: '22:00',
+    time: '2025-08-27T22:00:00',
     streamUrl: 'https://k352.liveball.st/match/1435555'
   },
   {
@@ -50,7 +52,15 @@ const matches = [
     teams: '🔵⚪Сельта - Бетіс🟢⚪',
     stadium: 'Естадіо Балаїдос (Віго) 🇪🇸',
     tournament: 'ЛаЛіга',
-    time: '22:00',
+    time: '2025-08-27T22:00:00',
+    streamUrl: 'https://k352.liveball.st/match/1390871'
+  },
+  {
+    id: '6',
+    teams: 'TEST',
+    stadium: 'Естадіо Балаїдос (Віго) 🇪🇸',
+    tournament: 'ЛаЛіга',
+    time: '2025-08-27T21:50:00',
     streamUrl: 'https://k352.liveball.st/match/1390871'
   }
 ];
@@ -71,7 +81,7 @@ function matchMessage(m) {
     `${m.teams}`,
     `🏟️ ${m.stadium}`,
     `🏆 ${m.tournament}`,
-    `⌚ ${m.time}`,
+    `⌚ ${new Date(m.time).toLocaleTimeString('uk-UA', { hour: '2-digit', minute: '2-digit' })}`,
     ``,
     `⚠️(трансляція з'являється за 5 хвилин до гри)⚠️`
   ].join('\n');
@@ -90,7 +100,29 @@ async function showMatches(ctx) {
 function matchKeyboard(m) {
   return Markup.inlineKeyboard([
     [Markup.button.url('▶️ Дивитися матч', m.streamUrl)],
+    [Markup.button.callback('⏰ Нагадати', `remind_${m.id}`)],
     [Markup.button.callback('⬅️ Повернутися', `back_to_matches`)]
+  ]);
+}
+
+// ---- База нагадувань ----
+let reminders = [];
+const REMINDER_FILE = 'reminders.json';
+
+if (fs.existsSync(REMINDER_FILE)) {
+  reminders = JSON.parse(fs.readFileSync(REMINDER_FILE));
+}
+
+function saveReminders() {
+  fs.writeFileSync(REMINDER_FILE, JSON.stringify(reminders));
+}
+
+function reminderTimeKeyboard(matchId) {
+  return Markup.inlineKeyboard([
+    [Markup.button.callback('⏱ 5 хв', `setremind_${matchId}_5`)],
+    [Markup.button.callback('⏱ 10 хв', `setremind_${matchId}_10`)],
+    [Markup.button.callback('⏱ 15 хв', `setremind_${matchId}_15`)],
+    [Markup.button.callback('⏱ 30 хв', `setremind_${matchId}_30`)]
   ]);
 }
 
@@ -123,21 +155,64 @@ bot.action('check_sub', async (ctx) => {
   return showMatches(ctx);
 });
 
-// Один хендлер для всіх матчів
+// Відкриття конкретного матчу
 bot.action(/^match_(.+)$/, async (ctx) => {
   const id = ctx.match[1];
   const m = matches.find(x => x.id === id);
   if (!m) return ctx.answerCbQuery('Матч не знайдено');
 
   try { await ctx.deleteMessage(); } catch (_) {}
-  await ctx.answerCbQuery(); // прибираємо "годинник" на кнопці
+  await ctx.answerCbQuery();
   return ctx.reply(matchMessage(m), matchKeyboard(m));
 });
 
-// Обробка повернення
+// Обробка нагадування (вибір часу)
+bot.action(/^remind_(.+)$/, async (ctx) => {
+  const matchId = ctx.match[1];
+  await ctx.deleteMessage();
+  return ctx.reply('Оберіть, за скільки хвилин нагадати:', reminderTimeKeyboard(matchId));
+});
+
+bot.action(/^setremind_(.+)_(\d+)$/, async (ctx) => {
+  const matchId = ctx.match[1];
+  const minutesBefore = parseInt(ctx.match[2]);
+  const userId = ctx.from.id;
+
+  const match = matches.find(m => m.id === matchId);
+  if (!match) return ctx.answerCbQuery('Матч не знайдено');
+
+  reminders.push({
+    userId,
+    matchId,
+    matchTime: match.time,
+    minutesBefore
+  });
+  saveReminders();
+
+  await ctx.deleteMessage();
+  return ctx.reply(`✅ Нагадування встановлено за ${minutesBefore} хв до матчу "${match.teams}"`);
+});
+
+// Повернення до списку матчів
 bot.action('back_to_matches', async (ctx) => {
   try { await ctx.deleteMessage(); } catch (_) {}
   return showMatches(ctx);
+});
+
+// ---- Планувальник нагадувань ----
+cron.schedule('* * * * *', () => {
+  const now = new Date();
+  reminders.forEach((r, index) => {
+    const matchDate = new Date(r.matchTime);
+    const diff = (matchDate - now) / 60000; // різниця у хвилинах
+    if (diff <= r.minutesBefore && diff > r.minutesBefore - 1) {
+      bot.telegram.sendMessage(r.userId,
+        `⚽ Матч "${matches.find(m => m.id===r.matchId).teams}" починається через ${r.minutesBefore} хв!\n🏟️ ${matches.find(m => m.id===r.matchId).stadium}\n🏆 ${matches.find(m => m.id===r.matchId).tournament}\n⌚ ${new Date(matches.find(m => m.id===r.matchId).time).toLocaleTimeString('uk-UA', { hour:'2-digit', minute:'2-digit' })}\n▶️ Дивитися трансляцію: ${matches.find(m => m.id===r.matchId).streamUrl}`
+      );
+      reminders.splice(index, 1);
+      saveReminders();
+    }
+  });
 });
 
 // ---- Глобальна обробка помилок ----
