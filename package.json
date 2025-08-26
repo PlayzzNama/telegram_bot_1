@@ -1,12 +1,19 @@
 {
   "name": "tg-stream-bot",
   "version": "1.0.0",
+  "description": "Telegram bot for football streams",
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js"
   },
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
   "dependencies": {
     "dotenv": "^16.4.0",
     "telegraf": "^4.16.3"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
