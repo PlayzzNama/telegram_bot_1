@@ -49,11 +49,11 @@ const matches = [
   },
   {
     id: '5',
-    teams: 'Жеребкування',
+    teams: '🔵Жеребкування🔵',
     stadium: 'Монако 🇲🇨',
     tournament: 'Ліга Чемпіонів 25/26',
     time: '2025-08-28T19:00:00',
-    streamUrl: 'https://www.youtube.com/watch?v=F5yByj81YKg'
+    streamUrl: 'https://www.uefa.com/uefachampionsleague/draws/'
   }
 ];
 
