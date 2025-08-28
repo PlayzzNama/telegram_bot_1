@@ -47,6 +47,14 @@ const matches = [
     time: '2025-08-28T19:00:00',
     streamUrl: 'https://k352.liveball.st/match/1438711'
   },
+  {
+    id: '5',
+    teams: 'Жеребкування',
+    stadium: 'Монако 🇲🇨',
+    tournament: 'Ліга Чемпіонів 25/26',
+    time: '2025-08-28T19:00:00',
+    streamUrl: 'https://www.youtube.com/watch?v=F5yByj81YKg'
+  }
 ];
 
 // ---- Перевірка підписки ----
