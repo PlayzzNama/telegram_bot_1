@@ -220,11 +220,11 @@ function matchMessage(m) {
 
 function leaguesKeyboard() {
   const leaguesOrder = [
-    "Прем'єр-ліга 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-    "ЛаЛіга 🇪🇸",
-    "Серія A 🇮🇹",
-    "Бундесліга 🇩🇪",
-    "Ліга 1 🇫🇷",
+    "Прем'єр-ліга󠁧󠁢",
+    "ЛаЛіга",
+    "Серія A",
+    "Бундесліга",
+    "Ліга 1",
   ];
   const leagues = [...new Set(matches.map((m) => m.tournament))];
   const sorted = leaguesOrder.filter((l) => leagues.includes(l));
