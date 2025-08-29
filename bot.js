@@ -220,7 +220,7 @@ function matchMessage(m) {
 
 function leaguesKeyboard() {
   const leaguesOrder = [
-    "Прем'єр-ліга󠁧󠁢",
+    "Прем'єр-ліга",
     "ЛаЛіга",
     "Серія A",
     "Бундесліга",
