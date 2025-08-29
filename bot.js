@@ -21,7 +21,7 @@ const matches = [
     stadium: "Стемфорд Брідж (Лондон) 🇬🇧",
     tournament: "Прем'єр-ліга",
     time: "2025-08-30T14:30:00",
-    streamUrl: "",
+    streamUrl: "https://k354.liveball.st/match/1378991",
   },
   {
     id: "2",
@@ -29,7 +29,7 @@ const matches = [
     stadium: "Моліньє (Вулвергемптон) 🇬🇧",
     tournament: "Прем'єр-ліга",
     time: "2025-08-30T17:00:00",
-    streamUrl: "",
+    streamUrl: "https://k354.liveball.st/match/1378998",
   },
   {
     id: "3",
@@ -37,7 +37,7 @@ const matches = [
     stadium: "Олд Траффорд (Манчестер) 🇬🇧",
     tournament: "Прем'єр-ліга",
     time: "2025-08-30T17:00:00",
-    streamUrl: "",
+    streamUrl: "https://k354.liveball.st/match/1378994",
   },
   {
     id: "4",
@@ -45,7 +45,7 @@ const matches = [
     stadium: "Стедіум оф Лайт (Сандерленд) 🇬🇧",
     tournament: "Прем'єр-ліга",
     time: "2025-08-30T17:00:00",
-    streamUrl: "",
+    streamUrl: "https://k354.liveball.st/match/1378996",
   },
   {
     id: "5",
@@ -53,7 +53,7 @@ const matches = [
     stadium: "Тоттенгем Хотспур (Лондон) 🇬🇧",
     tournament: "Прем'єр-ліга",
     time: "2025-08-30T17:00:00",
-    streamUrl: "",
+    streamUrl: "https://k354.liveball.st/match/1378997",
   },
   {
     id: "6",
@@ -61,7 +61,7 @@ const matches = [
     stadium: "Елланд Роуд (Лідс) 🇬🇧",
     tournament: "Прем'єр-ліга",
     time: "2025-08-30T19:30:00",
-    streamUrl: "",
+    streamUrl: "https://k354.liveball.st/match/1378992",
   },
   {
     id: "7",
@@ -69,7 +69,7 @@ const matches = [
     stadium: "Мендісорроса (Віторія-Гастейс) 🇪🇸",
     tournament: "ЛаЛіга",
     time: "2025-08-30T18:00:00",
-    streamUrl: "",
+    streamUrl: "https://k354.liveball.st/match/1390839",
   },
   {
     id: "8",
@@ -77,7 +77,7 @@ const matches = [
     stadium: "Карлос Тарт’єре (Овʼєдо) 🇪🇸",
     tournament: "ЛаЛіга",
     time: "2025-08-30T20:30:00",
-    streamUrl: "",
+    streamUrl: "https://k354.liveball.st/match/1390847",
   },
   {
     id: "9",
@@ -85,7 +85,7 @@ const matches = [
     stadium: "Мунтіліві (Жирона) 🇪🇸",
     tournament: "ЛаЛіга",
     time: "2025-08-30T20:30:00",
-    streamUrl: "",
+    streamUrl: "https://k354.liveball.st/match/1390844",
   },
   {
     id: "10",
@@ -93,7 +93,7 @@ const matches = [
     stadium: "Сантьяго Бернабеу (Мадрид) 🇪🇸",
     tournament: "ЛаЛіга",
     time: "2025-08-30T22:30:00",
-    streamUrl: "",
+    streamUrl: "https://k354.liveball.st/match/1390846",
   },
   {
     id: "11",
@@ -101,7 +101,7 @@ const matches = [
     stadium: "Ренато Даль-Ара (Болонья) 🇮🇹",
     tournament: "Серія A",
     time: "2025-08-30T19:30:00",
-    streamUrl: "",
+    streamUrl: "https://k354.liveball.st/match/1377874",
   },
   {
     id: "12",
@@ -109,7 +109,7 @@ const matches = [
     stadium: "Енніо Тардіні (Парма) 🇮🇹",
     tournament: "Серія A",
     time: "2025-08-30T19:30:00",
-    streamUrl: "",
+    streamUrl: "https://k354.liveball.st/match/1377881",
   },
   {
     id: "13",
@@ -117,7 +117,7 @@ const matches = [
     stadium: "Дієго Армандо Марадона (Неаполь) 🇮🇹",
     tournament: "Серія A",
     time: "2025-08-30T21:45:00",
-    streamUrl: "",
+    streamUrl: "https://k354.liveball.st/match/1377880",
   },
   {
     id: "14",
@@ -125,7 +125,7 @@ const matches = [
     stadium: "Арена Гарібальді (Піза) 🇮🇹",
     tournament: "Серія A",
     time: "2025-08-30T21:45:00",
-    streamUrl: "",
+    streamUrl: "https://k354.liveball.st/match/1377882",
   },
   {
     id: "15",
@@ -133,7 +133,7 @@ const matches = [
     stadium: "Везерштадіон (Бремен) 🇩🇪",
     tournament: "Бундесліга",
     time: "2025-08-30T16:30:00",
-    streamUrl: "",
+    streamUrl: "https://k354.liveball.st/match/1388324",
   },
   {
     id: "16",
@@ -141,7 +141,7 @@ const matches = [
     stadium: "ПройЗеро Арена (Зінсгайм) 🇩🇪",
     tournament: "Бундесліга",
     time: "2025-08-30T16:30:00",
-    streamUrl: "",
+    streamUrl: "https://k354.liveball.st/match/1388321",
   },
   {
     id: "17",
@@ -149,7 +149,7 @@ const matches = [
     stadium: "Ред Булл Арена (Лейпциг) 🇩🇪",
     tournament: "Бундесліга",
     time: "2025-08-30T16:30:00",
-    streamUrl: "",
+    streamUrl: "https://k354.liveball.st/match/1388322",
   },
   {
     id: "18",
@@ -157,7 +157,7 @@ const matches = [
     stadium: "Мерседес-Бенц Арена (Штутгарт) 🇩🇪",
     tournament: "Бундесліга",
     time: "2025-08-30T16:30:00",
-    streamUrl: "",
+    streamUrl: "https://k354.liveball.st/match/1388323",
   },
   {
     id: "19",
@@ -165,7 +165,31 @@ const matches = [
     stadium: "WWK Арена (Аугсбург) 🇩🇪",
     tournament: "Бундесліга",
     time: "2025-08-30T19:30:00",
-    streamUrl: "",
+    streamUrl: "https://k354.liveball.st/match/1388317",
+  },
+  {
+    id: "20",
+    teams: "Лорьян - Лілль",
+    stadium: "Стад дю Мустуар (Лорьян) 🇫🇷",
+    tournament: "Ліга 1",
+    time: "2025-08-30T18:00:00",
+    streamUrl: "https://k354.liveball.st/match/1387719",
+  },
+  {
+    id: "21",
+    teams: "Нант - Осер",
+    stadium: "Стад де ла Божуар (Нант) 🇫🇷",
+    tournament: "Ліга 1",
+    time: "2025-08-30T20:00:00",
+    streamUrl: "https://k354.liveball.st/match/1387722",
+  },
+  {
+    id: "22",
+    teams: "Тулуза - ПСЖ",
+    stadium: "Стадіон де Тулуз (Тулуза) 🇫🇷",
+    tournament: "Ліга 1",
+    time: "2025-08-30T22:05:00",
+    streamUrl: "https://k354.liveball.st/match/1387724",
   },
 ];
 
@@ -195,7 +219,13 @@ function matchMessage(m) {
 }
 
 function leaguesKeyboard() {
-  const leaguesOrder = ["Прем'єр-ліга", "ЛаЛіга", "Серія A", "Бундесліга"];
+  const leaguesOrder = [
+    "Прем'єр-ліга 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    "ЛаЛіга 🇪🇸",
+    "Серія A 🇮🇹",
+    "Бундесліга 🇩🇪",
+    "Ліга 1 🇫🇷",
+  ];
   const leagues = [...new Set(matches.map((m) => m.tournament))];
   const sorted = leaguesOrder.filter((l) => leagues.includes(l));
   return Markup.inlineKeyboard(
